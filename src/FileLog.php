@@ -91,9 +91,9 @@ class FileLog extends AbstractLogger {
 	 */
 	public function setLogLocation($errorLog) {
 		$errorLogInfo = pathinfo($errorLog);
-		$this->logFilePath = $errorLogInfo['dirname'];
+		$this->logFilePath = isset($errorLogInfo['dirname']) ? $errorLogInfo['dirname'] : '';
 		$this->logFileName = $errorLogInfo['filename'];
-		$this->logFileExtension =$errorLogInfo['extension'];
+		$this->logFileExtension = $errorLogInfo['extension'];
 		$this->logFileTimestamp = $this->determineTimestamp($this->logFilePath, $this->logFileName, $this->logFileExtension);
 		
 		if (!file_exists($this->logFilePath)) {
