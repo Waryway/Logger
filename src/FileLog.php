@@ -93,7 +93,7 @@ class FileLog extends AbstractLogger {
 		$errorLogInfo = pathinfo($errorLog);
 		$this->logFilePath = isset($errorLogInfo['dirname']) ? $errorLogInfo['dirname'] : '';
 		$this->logFileName = $errorLogInfo['filename'];
-		$this->logFileExtension = $errorLogInfo['extension'];
+		$this->logFileExtension = isset($errorLogInfo['extension']) ? $errorLogInfo['extension'] : '';
 		$this->logFileTimestamp = $this->determineTimestamp($this->logFilePath, $this->logFileName, $this->logFileExtension);
 		
 		if (!file_exists($this->logFilePath)) {
